@@ -1,7 +1,13 @@
+let find = 0;
+let end = false;
+let missing = 0;
+
+
+
 let guessWord = ["TARTIFLETTE", "SALADE", "TOMATE", "YAOURT", "CREVETTE", "HAMBURGER", "FRAISE", "CAROTTE", "COURGETTE", "CHOCOLAT", "HARICOT", "GLACE", "VIANDE", "POULET", "CHIPS", "FARINE", "OEUF", "GRENADINE", "KIWI", "TACOS", "PAIN", "RADIS", "LASAGNE", "SPECULOS", "BONBON", "MASCARPONE", "GRUYERE", "POMME" ];
 //Mot aléatoire choisi par l'ordinateur dans le tableau.
-guessWord = guessWord[Math.floor(Math.random() * guessWord.length)];
-console.log(guessWord);
+let findWord = guessWord[Math.floor(Math.random() * guessWord.length)];
+console.log(findWord);
 
 //Récupérer la valeur de chaque bouton.
 let A = document.getElementById("A").value = "A";
@@ -31,5 +37,28 @@ let X = document.getElementById("X").value = "X";
 let Y = document.getElementById("Y").value = "Y";
 let Z = document.getElementById("Z").value = "Z";
 
+//Changer la couleur des boutons
+function changeColor(element, color) {
+    element.style.backgroundColor = color;
+}
 
+function choose(element) {
+    if(element.style.backgroundColor === "grey" || end) {
+        return false;
+    }
 
+    let buttonLetter = element.innerHTML;
+    changeColor(element, "grey");
+
+    let trouve = false;
+    for (let i = 0; i < guessWord.length; i++) {
+        if (guessWord[i].innerHTML === buttonLetter) {
+            guessWord[i].style.visibility = "visibility"
+            trouve = true;
+            findWord++;
+        }
+    }
+    console.log()
+}
+
+choose();
