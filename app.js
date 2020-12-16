@@ -61,4 +61,4 @@ function choose(element) {
     console.log()
 }
 
-choose();
+document.getElementsByClassName("letter").addEventListener("click",choose(this));
