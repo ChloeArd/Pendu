@@ -1,7 +1,7 @@
 let find = 0;
 let end = false;
 let missing = 0;
-
+let div1 = document.createElement("div");
 
 
 let guessWord = ["TARTIFLETTE", "SALADE", "TOMATE", "YAOURT", "CREVETTE", "HAMBURGER", "FRAISE", "CAROTTE", "COURGETTE", "CHOCOLAT", "HARICOT", "GLACE", "VIANDE", "POULET", "CHIPS", "FARINE", "OEUF", "GRENADINE", "KIWI", "TACOS", "PAIN", "RADIS", "LASAGNE", "SPECULOS", "BONBON", "MASCARPONE", "GRUYERE", "POMME" ];
@@ -58,7 +58,16 @@ function choose(element) {
             findWord++;
         }
     }
-    console.log()
+
+   if (trouve !== false) {
+       missing++;
+       div1.innerHTML = "La lettre n'est pas contenue dans le mot !"
+
+       if(missing === 6) {
+
+       }
+
+   }
 }
 
 document.getElementsByClassName("letter").addEventListener("click",choose(this));
