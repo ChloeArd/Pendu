@@ -84,4 +84,10 @@ img{
         margin-left: 0;
         margin-right: 0;
     }
+    #newPart{
+        height: 90px;
+    }
+    #word{
+        height: 90px;
+    }
 }
