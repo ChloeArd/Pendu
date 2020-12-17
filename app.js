@@ -17,27 +17,27 @@ for (let i = 0; i < findWord.length; i++) {
     document.getElementById("wordTrait").appendChild(td);
 }
 
-//Quand on clique sur un boutton de tel lettre, cette lettre apparait dans l'encadrement.Mainteneant faut créée des conditions
+//Quand on clique sur un boutton de tel lettre, cette lettre apparait dans l'encadrement si elle correspond au mot
+// recherchés sinon elle se s'affiche pas.
 function writeLetter(letter){
     document.getElementById(letter).addEventListener("click",function () {
         if (findWord.includes(letter)) {
+            find++;
             document.getElementById("wordTrait").innerHTML += letter;
             document.getElementById(letter).style.backgroundColor = "grey";
             div1.innerHTML = "La lettre est bien contenue dans le mot !";
             div1.style.fontSize = "20px";
             document.getElementById("container").appendChild(div1);
         }
-
-        find++;
-        missing++;
         if (!findWord.includes(letter)) {
+            missing++;
             div1.innerHTML = "La lettre n'est pas contenue dans le mot !";
             div1.style.fontSize = "20px";
             document.getElementById("container").appendChild(div1);
             document.getElementById(letter).style.backgroundColor = "grey";
             end = false;
         }
-        else if (missing === 8) {
+        if (missing === 8) {
             div1.innerHTML = "Tu as perdu, le mot était " + findWord + ".";
             div1.style.fontSize = "20px";
             document.getElementById("container").appendChild(div1);
@@ -46,7 +46,7 @@ function writeLetter(letter){
             }
             end = true;
         }
-        else if (find === findWord.length) {
+        if (find === findWord.length) {
             document.getElementById("wordTrait").innerHTML = findWord;
             div1.innerHTML = "Tu as gagné, BRAVOOO !";
             div1.style.fontSize = "20px";
