@@ -3,16 +3,23 @@ let end = false;
 let missing = 0;
 let div1 = document.createElement("div");
 
-
 let guessWord = ["TARTIFLETTE", "SALADE", "ABRICOT", "ARTICHAUT", "TOMATE", "YAOURT", "CREVETTE", "HAMBURGER", "FRAISE", "CAROTTE", "COURGETTE", "CHOCOLAT", "HARICOT", "GLACE", "VIANDE", "POULET", "CHIPS", "FARINE", "OEUF", "GRENADINE", "KIWI", "TACOS", "PAIN", "RADIS", "LASAGNE", "SPECULOS", "BONBON", "MASCARPONE", "GRUYERE", "POMME" ];
 //Mot aléatoire choisi par l'ordinateur dans le tableau.
 let findWord = guessWord[Math.floor(Math.random() * guessWord.length)];
 console.log(findWord);
 
-//Quand on clicique sur un boutton de tel lettre, cette lettre apparait dans l'encadrement.Mainteneant faut créée des conditions
+//Faire apparaitre les "_" a la place des lettres du mot.
+for (let i = 0; i < findWord.length; i++) {
+    let td = document.createElement("td");
+    td.id = i;
+    td.innerHTML = "_";
+    document.getElementById("wordTrait").appendChild(td);
+}
+
+//Quand on clique sur un boutton de tel lettre, cette lettre apparait dans l'encadrement.Mainteneant faut créée des conditions
 function writeLetter(letter){
-    document.getElementById(letter).addEventListener("click",function (){
-        if(findWord.includes(letter)){
+    document.getElementById(letter).addEventListener("click",function () {
+        if (findWord.includes(letter)) {
             document.getElementById("wordTrait").innerHTML += letter;
             document.getElementById(letter).style.backgroundColor = "grey";
             div1.innerHTML = "La lettre est bien contenue dans le mot !";
@@ -38,14 +45,14 @@ function writeLetter(letter){
             }
             end = true;
         }
-        else if (find === findWord.length){
+        else if (find === findWord.length) {
             div1.innerHTML = "Tu as gagné, BRAVOOO !";
             div1.style.fontSize = "20px";
             document.getElementById("container").appendChild(div1);
             end = true;
         }
         console.log(missing);
-        })
+    });
 }
 writeLetter("A");
 writeLetter("B");
@@ -74,19 +81,7 @@ writeLetter("X");
 writeLetter("Y");
 writeLetter("Z");
 
-
-//Faire apparaitre les "_" a la place des lettres du mot.
-for (let i = 0; i < findWord.length; i++) {
-    var td = document.createElement("td");
-    td.id = i;
-    td.innerHTML = "_";
-    document.getElementById("wordTrait").appendChild(td);
-    if(findWord.includes("A")){
-
-    }
-}
-
-
+//Recharge la page en appuyant sur le bouton pour fair eune nouvelle partie
 document.getElementById("newPart").onclick = function (){
     location.reload();
 };
