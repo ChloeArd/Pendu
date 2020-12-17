@@ -8,6 +8,7 @@ let guessWord = ["TARTIFLETTE", "SALADE", "ABRICOT", "ARTICHAUT", "TOMATE", "YAO
 let findWord = guessWord[Math.floor(Math.random() * guessWord.length)];
 console.log(findWord);
 
+let td = document.createElement("td");
 //Faire apparaitre les "_" a la place des lettres du mot.
 for (let i = 0; i < findWord.length; i++) {
     let td = document.createElement("td");
@@ -46,6 +47,7 @@ function writeLetter(letter){
             end = true;
         }
         else if (find === findWord.length) {
+            document.getElementById("wordTrait").innerHTML = findWord;
             div1.innerHTML = "Tu as gagné, BRAVOOO !";
             div1.style.fontSize = "20px";
             document.getElementById("container").appendChild(div1);
