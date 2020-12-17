@@ -67,3 +67,10 @@ img{
     color: black;
     font-size: 30px;
 }
+
+#newPart {
+    width: 150px;
+    border: 1px solid black;
+    margin-top: 15px;
+    background-color: cadetblue;
+}

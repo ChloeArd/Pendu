@@ -37,37 +37,48 @@ let X = document.getElementById("X").value = "X";
 let Y = document.getElementById("Y").value = "Y";
 let Z = document.getElementById("Z").value = "Z";
 
-//Changer la couleur des boutons
-function changeColor(element, color) {
-    element.style.backgroundColor = color;
+
+function trouver(value) {
+    if (findWord.charAt(A)) {
+
+    }
 }
 
+
+
 function choose(element) {
-    if(element.style.backgroundColor === "grey" || end) {
-        return false;
-    }
-
-    let buttonLetter = element.innerHTML;
-    changeColor(element, "grey");
-
     let trouve = false;
-    for (let i = 0; i < guessWord.length; i++) {
-        if (guessWord[i].innerHTML === buttonLetter) {
-            guessWord[i].style.visibility = "visibility"
-            trouve = true;
-            findWord++;
-        }
-    }
 
    if (trouve !== false) {
        missing++;
-       div1.innerHTML = "La lettre n'est pas contenue dans le mot !"
-
-       if(missing === 6) {
-
+       if(missing < 8) {
+           div1.innerHTML = "La lettre n'est pas contenue dans le mot !";
+           div1.style.fontSize = "20px";
+           end = false;
+       }
+       else if(missing === 8) {
+            div1.innerHTML = "Tu as perdu, le mot était " + findWord + ".";
+           div1.style.fontSize = "20px";
+            en = true;
+       }
+       else {
+           div1.innerHTML = "Tu as gagné, BRAVOOO !";
+           div1.style.fontSize = "20px";
+            end = true;
        }
 
    }
 }
 
-document.getElementsByClassName("letter").addEventListener("click",choose(this));
+function trait(){
+    for (let i = 0; i < findWord.length; i++){
+        document.getElementById("wordTrait").innerHTML = "_" * i;
+    }
+}
+trait();
+
+choose();
+
+document.getElementById("newPart").onclick = function (){
+    location.reload();
+};
