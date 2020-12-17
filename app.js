@@ -15,11 +15,37 @@ function writeLetter(letter){
         if(findWord.includes(letter)){
             document.getElementById("wordTrait").innerHTML += letter;
             document.getElementById(letter).style.backgroundColor = "grey";
+            div1.innerHTML = "La lettre est bien contenue dans le mot !";
+            div1.style.fontSize = "20px";
+            document.getElementById("container").appendChild(div1);
         }
-        else {
+
+        find++;
+        missing++;
+        if (!findWord.includes(letter)) {
+            div1.innerHTML = "La lettre n'est pas contenue dans le mot !";
+            div1.style.fontSize = "20px";
+            document.getElementById("container").appendChild(div1);
             document.getElementById(letter).style.backgroundColor = "grey";
+            end = false;
         }
-    })
+        else if (missing === 8) {
+            div1.innerHTML = "Tu as perdu, le mot était " + findWord + ".";
+            div1.style.fontSize = "20px";
+            document.getElementById("container").appendChild(div1);
+            for (var i = 0; i < findWord.length; i++) {
+                findWord[i].innerHTML = findWord[i];
+            }
+            end = true;
+        }
+        else if (find === findWord.length){
+            div1.innerHTML = "Tu as gagné, BRAVOOO !";
+            div1.style.fontSize = "20px";
+            document.getElementById("container").appendChild(div1);
+            end = true;
+        }
+        console.log(missing);
+        })
 }
 writeLetter("A");
 writeLetter("B");
@@ -47,34 +73,6 @@ writeLetter("W");
 writeLetter("X");
 writeLetter("Y");
 writeLetter("Z");
-
-function choose(letter) {
-    let trouve = false;
-       if (trouve !== false) {
-           missing++;
-           if (missing < 8) {
-               div1.innerHTML = "La lettre n'est pas contenue dans le mot !";
-               div1.style.fontSize = "20px";
-               end = false;
-           }
-           else if (missing === 8) {
-               div1.innerHTML = "Tu as perdu, le mot était " + findWord + ".";
-               div1.style.fontSize = "20px";
-               for (var i = 0; i < findWord.length; i++) {
-                   findWord[i].innerHTML = findWord[i];
-               }
-               end = true;
-           }
-           else {
-               div1.innerHTML = "Tu as gagné, BRAVOOO !";
-               div1.style.fontSize = "20px";
-               end = true;
-           }
-           console.log(missing);
-       }
-}
-
-document.getElementById("A").onclick = choose("A");
 
 
 //Faire apparaitre les "_" a la place des lettres du mot.
