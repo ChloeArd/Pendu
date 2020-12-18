@@ -8,7 +8,6 @@ let guessWord = ["TARTIFLETTE", "SALADE", "ABRICOT", "ARTICHAUT", "TOMATE", "YAO
 let findWord = guessWord[Math.floor(Math.random() * guessWord.length)];
 console.log(findWord);
 
-let td = document.createElement("td");
 //Faire apparaitre les "_" a la place des lettres du mot.
 for (let i = 0; i < findWord.length; i++) {
     let td = document.createElement("td");
